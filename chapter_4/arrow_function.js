@@ -34,7 +34,7 @@ const bill = (products, tax) => {
     }
 
     return total;
-}
+};
 
-console.log(greet2())
-console.log(bill(10, 2))
+console.log(greet2());
+console.log(bill([10, 15, 30], 0.2));
