@@ -40,4 +40,3 @@ const calcVol = function(area, height) {
 
 
 const volume = calcVol(area, 8);
-
