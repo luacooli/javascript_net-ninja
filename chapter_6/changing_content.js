@@ -12,5 +12,10 @@ const paras3 = document.querySelectorAll('p');
 
 const content = document.querySelector('.content');
 // console.log(content.innerHTML);
+// content.innerHTML += '<h2> this is a new h2 </h2>'
 
-content.innerHTML += '<h2> this is a new h2 </h2>'
+const people = ['mario', 'luigi', 'yoshi'];
+
+people.forEach(person => {
+  content.innerHTML += `<p>${person}</p>`;
+});
