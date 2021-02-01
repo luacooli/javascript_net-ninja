@@ -45,3 +45,46 @@ const saleProducts = products.map((product) => {
 });
 
 console.log(products, saleProducts);
+
+// reduce method
+const scores2 = [10, 20, 60, 40, 70, 90, 30];
+
+const result = scores2.reduce((acc, curr) => {
+  if (curr > 50) {
+    acc++;
+  }
+  return acc;
+}, 0);
+
+console.log(result);
+
+const scores3 = [
+  { player: "mario", score: 50 },
+  { player: "yoshi", score: 30 },
+  { player: "mario", score: 70 },
+  { player: "crystal", score: 60 },
+  { player: "mario", score: 30 },
+  { player: "yoshi", score: 30 },
+  { player: "mario", score: 90 },
+  { player: "crystal", score: 60 },
+  { player: "mario", score: 100 },
+  { player: "yoshi", score: 30 },
+  { player: "mario", score: 80 },
+  { player: "crystal", score: 60 },
+];
+
+const marioTotal = scores3.reduce((acc, curr) => {
+  if (curr.player === "mario") {
+    acc += curr.score;
+  }
+  return acc;
+}, 0);
+
+console.log(marioTotal);
+
+// find method
+const scores4 = [10, 5, 0, 40, 30, 10, 90, 70];
+
+const firstHighScore = scores4.find(score => score > 50);
+
+console.log(firstHighScore);
