@@ -20,8 +20,21 @@ class User {
   }
 }
 
+class Adimin extends User {
+  deleteUser(user) {
+    users = users.filter((u) => u.username !== user.username);
+  }
+}
+
 const userOne = new User("mario", "mario@thenetninja.co.uk");
 const userTwo = new User("luigi", "luigi@thenetninja.co.uk");
+const userThree = new Adimin("shaun", "shaun@thenetninja.co.uk");
 
-console.log(userOne, userTwo);
+console.log(userOne, userTwo, userThree);
 userOne.login().incScore().incScore().incScore().logout();
+
+let users = [userOne, userTwo, userThree];
+console.log(users);
+
+userThree.deleteUser(userTwo);
+console.log(users);
