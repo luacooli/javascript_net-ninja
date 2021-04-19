@@ -21,6 +21,11 @@ class User {
 }
 
 class Adimin extends User {
+  constructor(username, email, title) {
+    super(username, email);
+    this.title = title;
+  }
+
   deleteUser(user) {
     users = users.filter((u) => u.username !== user.username);
   }
@@ -30,11 +35,13 @@ const userOne = new User("mario", "mario@thenetninja.co.uk");
 const userTwo = new User("luigi", "luigi@thenetninja.co.uk");
 const userThree = new Adimin("shaun", "shaun@thenetninja.co.uk");
 
-console.log(userOne, userTwo, userThree);
-userOne.login().incScore().incScore().incScore().logout();
+console.log(userThree);
 
-let users = [userOne, userTwo, userThree];
-console.log(users);
+// console.log(userOne, userTwo, userThree);
+// userOne.login().incScore().incScore().incScore().logout();
 
-userThree.deleteUser(userTwo);
-console.log(users);
+// let users = [userOne, userTwo, userThree];
+// console.log(users);
+
+// userThree.deleteUser(userTwo);
+// console.log(users);
