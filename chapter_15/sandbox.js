@@ -35,7 +35,7 @@ const userOne = new User("mario", "mario@thenetninja.co.uk");
 const userTwo = new User("luigi", "luigi@thenetninja.co.uk");
 const userThree = new Adimin("shaun", "shaun@thenetninja.co.uk");
 
-console.log(userThree);
+console.log(userOne);
 
 // console.log(userOne, userTwo, userThree);
 // userOne.login().incScore().incScore().incScore().logout();
