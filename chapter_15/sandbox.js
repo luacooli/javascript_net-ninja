@@ -20,7 +20,7 @@ class User {
   }
 }
 
-class Adimin extends User {
+class Admin extends User {
   constructor(username, email, title) {
     super(username, email);
     this.title = title;
@@ -33,7 +33,7 @@ class Adimin extends User {
 
 const userOne = new User("mario", "mario@thenetninja.co.uk");
 const userTwo = new User("luigi", "luigi@thenetninja.co.uk");
-const userThree = new Adimin("shaun", "shaun@thenetninja.co.uk");
+const userThree = new Admin("shaun", "shaun@thenetninja.co.uk");
 
 console.log(userOne);
 
