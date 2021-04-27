@@ -33,7 +33,7 @@ class Admin extends User {
 
 const userOne = new User("mario", "mario@thenetninja.co.uk");
 const userTwo = new User("luigi", "luigi@thenetninja.co.uk");
-const userThree = new Admin("shaun", "shaun@thenetninja.co.uk");
+const userThree = new Admin("shaun", "shaun@thenetninja.co.uk", 'nice title');
 
 console.log(userOne);
 
