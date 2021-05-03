@@ -1,18 +1,20 @@
 const list = document.querySelector('ul');
 
 const addRecipe = (recipe) => {
+  let time = recipe.created_at.toDate();
   let html = `
     <li>
       <div>${recipe.title}</div>
+      <div>${time}</div>
     </li>
   `;
 
-  console.log(html);
+  list.innerHTML += html;
 }
 
 db.collection("recipes")
   .get()
-  .then((snapshot) => {
+  .then(snapshot => {
     // when we have the data
     snapshot.docs.forEach(doc => {
       addRecipe(doc.data());
