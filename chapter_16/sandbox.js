@@ -1,4 +1,5 @@
-const list = document.querySelector('ul');
+const list = document.querySelector("ul");
+const form = document.querySelector("form");
 
 const addRecipe = (recipe) => {
   let time = recipe.created_at.toDate();
@@ -10,14 +11,31 @@ const addRecipe = (recipe) => {
   `;
 
   list.innerHTML += html;
-}
+};
 
+// get documents
 db.collection("recipes")
   .get()
-  .then(snapshot => {
+  .then((snapshot) => {
     // when we have the data
-    snapshot.docs.forEach(doc => {
+    snapshot.docs.forEach((doc) => {
       addRecipe(doc.data());
     });
   })
   .catch((err) => console.log(err));
+
+// add documents
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const now = new Date();
+  const recipe = {
+    title: form.recipe.value,
+    created_at: firebase.firestore.Timestamp.fromDate(now),
+  };
+
+  db.collection("recipes")
+    .add(recipe)
+    .then(() => console.log("recipe added"))
+    .catch((err) => console.log(err));
+});
