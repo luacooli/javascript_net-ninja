@@ -28,12 +28,15 @@ newNameForm.addEventListener("submit", e => {
 
   // show then hide the update message
   updateMssg.innerText = `Your name was updated to ${newName}`;
-  setTimeout(() => updateMssg.innerText = "", 3000);
+  setTimeout(() => (updateMssg.innerText = ""), 3000);
 });
+
+// check local storage for a name
+const username = localStorage.username ? localStorage.username : "anon";
 
 // class instances
 const chatUI = new ChatUI(chatList);
-const chatroom = new Chatroom("gamming", "shaun");
+const chatroom = new Chatroom("gamming", username);
 
 // get chats and render
 chatroom.getChats(data => chatUI.render(data));
