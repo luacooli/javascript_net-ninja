@@ -1,12 +1,15 @@
 // render chat template to the DOM
 // clear the list of chats (when the room changes)
 
-
 class ChatUI {
   constructor(list) {
     this.list = list;
   }
-  
+
+  clear() {
+    this.list.innerHTML = "";
+  }
+
   render(data) {
     const when = moment(data.created_at.toDate()).fromNow();
     const html = `
