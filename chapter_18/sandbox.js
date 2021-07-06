@@ -40,12 +40,29 @@ console.log(ages.has(20), ages.has(25));
 ages.clear();
 console.log(ages);
 
-const ninja = new Set([
+const ninjas = new Set([
   { name: "shaun", age: 30 },
   { name: "crystal", age: 29 },
   { name: "chun-li", age: 32 },
 ]);
 
-ninja.forEach(ninja => {
+ninjas.forEach(ninja => {
   console.log(ninja.name, ninja.age);
 });
+
+const symbolOne = Symbol("a generic name");
+const symbolTwo = Symbol("a generic name");
+
+console.log(symbolOne, symbolTwo, typeof symbolOne);
+console.log(symbolOne == symbolTwo);
+
+const ninja = {};
+
+ninja.age = 30;
+ninja["belt"] = "orange";
+ninja["belt"] = "black";
+
+ninja[symbolOne] = "ryu";
+ninja[symbolTwo] = "shaun";
+
+console.log(ninja);
