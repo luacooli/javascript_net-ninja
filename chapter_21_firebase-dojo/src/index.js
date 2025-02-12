@@ -17,6 +17,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
+  onAuthStateChanged
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -42,7 +43,7 @@ const colRef = collection(db, 'books')
 const q = query(colRef, where("author", "==", "patrick rothfuss"), orderBy('createdAt'))
 
 // realtime collection data
-onSnapshot(q, (snapshot) => {
+const unsubCol = onSnapshot(q, (snapshot) => {
   let books = []
   snapshot.docs.forEach(doc => {
     books.push({ ...doc.data(), id: doc.id })
@@ -111,20 +112,20 @@ signupForm.addEventListener('submit', (e) => {
     })
 })
 
-// log in and log out user
-const logoutForm = document.querySelector('.logout')
-logoutForm.addEventListener('click', () => {
+// logging in and out
+const logoutButton = document.querySelector('.logout')
+logoutButton.addEventListener('click', () => {
   signOut(auth)
     .then(() => {
-      console.log('user logged out')
+      console.log('user signed out')
     })
-    .catch((err) => {
-      console.error(err.message)
+    .catch(err => {
+      console.log(err.message)
     })
 })
 
 const loginForm = document.querySelector('.login')
-logoutForm.addEventListener('submit', (e) => {
+loginForm.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const email = loginForm.email.value
@@ -132,9 +133,24 @@ logoutForm.addEventListener('submit', (e) => {
 
   signInWithEmailAndPassword(auth, email, password)
     .then(cred => {
-      console.log('user logged in: ' + cred.user);
+      console.log('user logged in:', cred.user)
+      loginForm.reset()
     })
     .catch(err => {
-      console.err(err)
+      console.log(err.message)
     })
+})
+
+// subscribing to auth changes
+const unsubAuth = onAuthStateChanged(auth, (user) => {
+  console.log('user status changed:', user)
+})
+
+// unsubscribing from changes (auth & db)
+const unsubButton = document.querySelector('.unsub')
+unsubButton.addEventListener('click', () => {
+  console.log('unsubscribing')
+  unsubCol()
+  unsubDoc()
+  unsubAuth()
 })
