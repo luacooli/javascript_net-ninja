@@ -76,13 +76,6 @@ deleteBookForm.addEventListener('submit', (e) => {
     })
 })
 
-// fetching a single document (& realtime)
-const docRef = doc(db, 'books', 'gGu4P9x0ZHK9SspA1d9j')
-
-onSnapshot(docRef, (doc) => {
-  console.log(doc.data(), doc.id)
-})
-
 // updating a document
 const updateForm = document.querySelector('.update')
 updateForm.addEventListener('submit', (e) => {
