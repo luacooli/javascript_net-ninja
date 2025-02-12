@@ -15,6 +15,8 @@ import {
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  signOut,
+  signInWithEmailAndPassword,
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -106,5 +108,33 @@ signupForm.addEventListener('submit', (e) => {
     })
     .catch(err => {
       console.log(err.message)
+    })
+})
+
+// log in and log out user
+const logoutForm = document.querySelector('.logout')
+logoutForm.addEventListener('click', () => {
+  signOut(auth)
+    .then(() => {
+      console.log('user logged out')
+    })
+    .catch((err) => {
+      console.error(err.message)
+    })
+})
+
+const loginForm = document.querySelector('.login')
+logoutForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const email = loginForm.email.value
+  const password = loginForm.password.value
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(cred => {
+      console.log('user logged in: ' + cred.user);
+    })
+    .catch(err => {
+      console.err(err)
     })
 })
